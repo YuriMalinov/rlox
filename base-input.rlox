@@ -1,0 +1,8 @@
+// Some comment
+var a = 123 * 34 / 44.23;
+
+class SomeClass {
+    fn(arg1, arg2) {
+        return super.call(arg1, arg2) + 1;
+    }
+}

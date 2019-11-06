@@ -1,8 +1,14 @@
 use std::env;
 use std::fs;
 use std::io;
-use std::process::exit;
 use std::io::Write;
+use std::process::exit;
+
+use rlox::Scanner;
+use crate::rlox::StdErrErrorHandler;
+
+mod rlox;
+
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -34,5 +40,9 @@ fn run_prompt() {
 }
 
 fn run(program: &str) {
-    println!("I'm running program! wof! {}", program);
+    let mut scanner = Scanner::new(program, &StdErrErrorHandler {});
+    let tokens = scanner.scan_tokens();
+    for token in tokens {
+        println!("{:?}", token);
+    }
 }
